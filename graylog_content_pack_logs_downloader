@@ -2,15 +2,15 @@
 
   "id" : null,
 
-  "name" : "Incapsula Content Pack",
+  "name" : "  Content Pack",
 
-  "description" : "Incapsula Content Pack",
+  "description" : "  Content Pack",
 
-  "category" : "Incapsula Content Pack",
+  "category" : "  Content Pack",
 
   "inputs" : [ {
 
-    "title" : "Incapsula-syslog-udp",
+    "title" : " -syslog-udp",
 
     "configuration" : {
 
@@ -810,7 +810,7 @@
 
   "dashboards" : [ {
 
-    "title" : "Incapsula - SIEM Logs",
+    "title" : "  - SIEM Logs",
 
     "description" : "SIEM Logs Dashboards",
 
