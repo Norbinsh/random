@@ -1,0 +1,5 @@
+# Alias for starting the logs-downloader python script as a background job and sending stdout / stderror to a file 
+alias startlogger='python /logs-downloader-master/script/LogsDownloader.py -c /logs-downloader-master/config/ -v debug > /logs-downloader-master/stdout.txt 2>&1 &'
+
+# Alias for killing any running LogsDownloader.py
+alias stoplogger='pgrep -f LogsDownloader.py | xargs kill -9'

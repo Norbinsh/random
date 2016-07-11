@@ -1,0 +1,16 @@
+FROM graylog2/allinone
+MAINTAINER wowshay@gmail.com
+# Custom Graylog content pack
+COPY content_pack_appliance.json /opt/graylog/contentpacks
+# Logs downloader files
+COPY /logs-downloader-master/ /logs-downloader-master/
+# Custom .bashrc with the addition of start/stop aliases
+COPY .bashrc /root
+# Packages needed for the logs downloader to run
+RUN apt-get update && apt-get --allow-unauthenticated install -y --force-yes \
+python \
+python-m2crypto \
+python-pip
+RUN pip install https://pypi.python.org/packages/source/l/loggerglue/loggerglue-1.0.tar.gz
+RUN apt-get install -y --force-yes python-dev
+RUN pip install pycrypto
