@@ -1,0 +1,1103 @@
+{
+
+  "id" : null,
+
+  "name" : "Incapsula Content Pack",
+
+  "description" : "Incapsula Content Pack",
+
+  "category" : "Incapsula Content Pack",
+
+  "inputs" : [ {
+
+    "title" : "Incapsula-syslog-udp",
+
+    "configuration" : {
+
+      "override_source" : "",
+
+      "allow_override_date" : true,
+
+      "recv_buffer_size" : 1048576,
+
+      "bind_address" : "0.0.0.0",
+
+      "port" : 514
+
+    },
+
+    "type" : "org.graylog2.inputs.syslog.udp.SyslogUDPInput",
+
+    "global" : false,
+
+    "extractors" : [ {
+
+      "title" : "Rule Description",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs9=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs9",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Client Type",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "dproc=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "dproc",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Cef Severity",
+
+      "type" : "SPLIT_AND_INDEX",
+
+      "configuration" : {
+
+        "index" : 7,
+
+        "split_by" : "|"
+
+      },
+
+      "converters" : [ {
+
+        "type" : "NUMERIC",
+
+        "configuration" : { }
+
+      } ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cef_severity",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Action Taken",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "act=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "act",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Request Method",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "requestMethod=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "requestMethod",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "URL",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "request=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "request",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Rule Name",
+
+      "type" : "SPLIT_AND_INDEX",
+
+      "configuration" : {
+
+        "index" : 6,
+
+        "split_by" : "|"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "rule_name",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Session Number",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "fileId=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "fileId",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Site Name",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "sourceServiceName=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "sourceServiceName",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Site ID",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "siteid=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "siteid",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "User Agent",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "requestClientApplication=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "requestClientApplication",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Visitor ID",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs4=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs4",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Source IP",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "src=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "src",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Client Application",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs6=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs6",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "City",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cicode=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cicode",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Country",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "ccode=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "ccode",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Query String",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "qstr=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "qstr",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Account Name",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "suid=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "suid",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Support Javascript",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs2=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs2",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Support Cookies",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs3=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs3",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Support Captcha",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs1=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs1",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Account Name",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "Customer=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "Customer",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Start Time",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "start=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "start",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Protocol",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "app=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "app",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Action Taken",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "act=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "act",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Application Signature",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "cs5=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "cs5",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Attack Type",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "fileType=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "fileType",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Request ID",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "deviceExternalId=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "deviceExternalId",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    }, {
+
+      "title" : "Attack Severity",
+
+      "type" : "REGEX",
+
+      "configuration" : {
+
+        "regex_value" : "filePermission=((?:.(?![a-zA-Z\\d]+=))*)"
+
+      },
+
+      "converters" : [ ],
+
+      "order" : 0,
+
+      "cursor_strategy" : "COPY",
+
+      "target_field" : "filePermission",
+
+      "source_field" : "message",
+
+      "condition_type" : "NONE",
+
+      "condition_value" : ""
+
+    } ],
+
+    "static_fields" : {
+
+      "from_syslog" : "true"
+
+    }
+
+  } ],
+
+  "streams" : [ ],
+
+  "outputs" : [ ],
+
+  "dashboards" : [ {
+
+    "title" : "Incapsula - SIEM Logs",
+
+    "description" : "SIEM Logs Dashboards",
+
+    "dashboard_widgets" : [ {
+
+      "description" : "Request Results - Total",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 0
+
+        },
+
+        "field" : "act",
+
+        "show_pie_chart" : true,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 1,
+
+      "row" : 2,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Attack Types",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "field" : "rule_name",
+
+        "show_pie_chart" : false,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 3,
+
+      "row" : 4,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Attacking Countries",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "field" : "ccode",
+
+        "show_pie_chart" : false,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 2,
+
+      "row" : 4,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Requests - Total",
+
+      "type" : "SEARCH_RESULT_COUNT",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 0
+
+        },
+
+        "lower_is_better" : false,
+
+        "trend" : false,
+
+        "query" : "* AND NOT rule_name:Normal"
+
+      },
+
+      "col" : 1,
+
+      "row" : 1,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Request Results - Last 7 Days",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "field" : "act",
+
+        "show_pie_chart" : true,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 4,
+
+      "row" : 2,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Requests - Last 7 Days",
+
+      "type" : "SEARCH_RESULT_COUNT",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "lower_is_better" : false,
+
+        "trend" : false,
+
+        "query" : "* AND NOT rule_name:Normal"
+
+      },
+
+      "col" : 4,
+
+      "row" : 1,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Attacking IP Sources",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "field" : "src",
+
+        "show_pie_chart" : false,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 3,
+
+      "row" : 2,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Attacked Sites",
+
+      "type" : "QUICKVALUES",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 604800
+
+        },
+
+        "field" : "sourceServiceName",
+
+        "show_pie_chart" : false,
+
+        "query" : "* AND NOT rule_name:Normal",
+
+        "show_data_table" : true
+
+      },
+
+      "col" : 2,
+
+      "row" : 2,
+
+      "cache_time" : 10
+
+    }, {
+
+      "description" : "Requests Histogram",
+
+      "type" : "SEARCH_RESULT_CHART",
+
+      "configuration" : {
+
+        "timerange" : {
+
+          "type" : "relative",
+
+          "range" : 86400
+
+        },
+
+        "interval" : "hour",
+
+        "query" : "* AND NOT rule_name:Normal"
+
+      },
+
+      "col" : 2,
+
+      "row" : 1,
+
+      "cache_time" : 10
+
+    } ]
+
+  } ],
+
+  "grok_patterns" : [ ]
+
+}
