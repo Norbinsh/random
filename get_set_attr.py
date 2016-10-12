@@ -40,3 +40,18 @@ md.full_description = "Yellow Small"
 print(md.color)
 print(md.size)
 print(md.full_description)
+
+"""
+Output:
+
+red
+huge
+red huge
+None
+None
+None None
+Yellow
+Small
+Yellow Small
+
+"""
