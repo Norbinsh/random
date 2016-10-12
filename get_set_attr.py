@@ -1,19 +1,42 @@
-class Attributer(object):
-    def __getattr__(self, name):
-        print("attribute name", name)
-    def __setattr__(self, name, value):
-        print("Set", name, "To", value)
+class MouseDescriptor(object):
+    def __init__(self, color, size):
+        self.color = color
+        self.size = size
 
-att_instance = Attributer()
+    @property
+    def full_description(self):
+        return "The color is {} and the size is {}".format(self.color, self.size)
 
-att_instance.test
-att_instance.test = 12345
+    @property
+    def full_description(self):
+        return '{} {}'.format(self.color, self.size)
+
+    @full_description.setter
+    def full_description(self, desc):
+        color, size = desc.split(' ')
+        self.color = color
+        self.size = size
+
+    @full_description.deleter
+    def full_description(self):
+        self.color = None
+        self.size = None
+
+md = MouseDescriptor("red", "huge")
 
 
-"""
-Output:
+print(md.color)
+print(md.size)
+print(md.full_description)
 
-    attribute name test
-    Set test To 12345
+del md.full_description
 
-"""
+print(md.color)
+print(md.size)
+print(md.full_description)
+
+md.full_description = "Yellow Small"
+
+print(md.color)
+print(md.size)
+print(md.full_description)
