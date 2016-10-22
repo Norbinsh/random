@@ -1,4 +1,4 @@
-json_data = {}
+json_data = { }
 
 
 # yield from recursion
