@@ -14,7 +14,7 @@ class Reverse(object):
 
 
 def main():
-    rev = reversed('My Reversed String')
+    rev = Reverse('My Reversed String')
     for char in rev:
         print(char)
 
