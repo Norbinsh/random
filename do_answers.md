@@ -17,10 +17,15 @@ Not yet.
 
 ### What’s a PTR in DNS?
 A record of type == PTR, that is used to look up a domain name by IP, quite the opposite of an A record.
+
 Using a special domain (in IPV4 at least): 'in-addr-arpa', for example:
+
 For google's DNS server: 8.8.4.4, let's find the PTR record:
+
 shay@redbox:~$ dig -x 8.8.4.4
+
 ANSWER: 4.4.8.8.in-addr.arpa. PTR google-public-dns-b.google.com. -> 8.8.4.4
+
 ### What’s a MX record in DNS?
 Helps with the domain's mail flow by directing the sender to the appropriate mailserver we have configured.
 ### How a CDN chooses the closest host to serve a client?
