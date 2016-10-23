@@ -48,10 +48,14 @@ In case and one disk goes bad, others will keep serving data.
 
 What’s the advantage of one RAID over another?
 Raid 0 Pros: Performance
+
 Raid 0 Cons: Redundancy
+
 Raid 5 Pros: Reliable, somewhat better than most read performance.
+
 Raid 5 Cons: Write speeds not as fast as Raid 0.
-Alternative to init.d in Linux?
+
+### Alternative to init.d in Linux?
 Systemd!
 How to view running processes in Linux?
 ps, ps aux, etc.
