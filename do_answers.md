@@ -61,10 +61,12 @@ Raid 5 Pros: Reliable, somewhat better than most read performance.
 Raid 5 Cons: Write speeds not as fast as Raid 0.
 
 ### Alternative to init.d in Linux?
+
 Systemd!
-How to view running processes in Linux?
+
+### How to view running processes in Linux?
 ps, ps aux, etc.
-How to check DNS records in Linux?
+### How to check DNS records in Linux?
 dig em.
 
 
