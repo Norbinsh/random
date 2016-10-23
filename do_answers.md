@@ -1,6 +1,8 @@
 https://github.com/spikenode/DevOps-Interview-Questions#contributors
 
+
 # General
+
 
 ### Have you used Puppet, Chef, Salt or Ansible?
 Not yet.
@@ -9,7 +11,9 @@ Not yet.
 ### Describe the size of the environment that you automated (how many servers, small scale or large scale)
 ### Describe the most challenging situation that you were faced with and how did you fix it?
 
+
 # Network Questions
+
 
 ### What’s a PTR in DNS?
 A record of type == PTR, that is used to look up a domain name by IP, quite the opposite of an A record.
@@ -27,14 +31,21 @@ Possibly with a complex enough application that can't have its files changed in 
 When data is too sensitive and is not to be routed through anyone else, not even a trusted CDN.
 When a possible latency addition is possible due to extra routes.
 
+
 # Linux Questions
+
 
 ### Difference between RAID 0, 1 and 5?
 RAID 0 is active-active mode, all disks share/read-write at the same time, in case and one of them goes corrupt, there's
 big risk of partial or complete data loss. Great performance however.
+
 IN RAID 5, each block device stores the same data as the other, which is good for redundancy.
+
 Performance wise, read requests are served by all blocks, which helps.
+
 In case and one disk goes bad, others will keep serving data.
+
+
 What’s the advantage of one RAID over another?
 Raid 0 Pros: Performance
 Raid 0 Cons: Redundancy
