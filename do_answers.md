@@ -45,8 +45,8 @@ Performance wise, read requests are served by all blocks, which helps.
 
 In case and one disk goes bad, others will keep serving data.
 
+### What’s the advantage of one RAID over another?
 
-What’s the advantage of one RAID over another?
 Raid 0 Pros: Performance
 
 Raid 0 Cons: Redundancy
