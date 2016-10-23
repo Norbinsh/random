@@ -37,7 +37,7 @@ class GasPrice(object):
     gas_market.append(dict(a=x, b=x, c=x, d=x))
 
     t = Template("$a $b $c $d $e") # Using safe_substitute method, that would
-    # display literal when there's no value match
+    # display literal when there's no value match.
     for estimated_price in gas_market:
         print(t.safe_substitute(estimated_price))
 
