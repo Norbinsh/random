@@ -49,7 +49,3 @@ def leap_check():
 
 if __name__ == '__main__':
     print(leap_check())
-
-"""
-In our get_initial_args function,
-"""
