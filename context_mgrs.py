@@ -17,7 +17,7 @@ def file_open(file_path):
         print("Closing file")
         f_obj.close()
 
-with file_open('C:\\Users\shay.elmualem\Desktop\WAF_RULES_MODES_377077_01-22-2017.csv') as fobj:
+with file_open('myfile.csv') as fobj:
     fobj.write('shay test')
 
 
@@ -59,7 +59,7 @@ with suppress(FileNotFoundError):
 # stdout / stderr example, without contextlib
 
 import sys
-path = 'C:\\Users\shay.elmualem\Desktop\WAF_RULES_MODES_377077_01-22-2017.csv'
+path = 'myfile.csv'
 with open(path, 'w') as fobj:
     sys.stdout = fobj
     help(sum)
@@ -68,7 +68,7 @@ with open(path, 'w') as fobj:
 
 from contextlib import redirect_stdout
 
-path = 'C:\\Users\shay.elmualem\Desktop\WAF_RULES_MODES_377077_01-22-2017.csv'
+path = 'myfile.csv'
 with open(path, 'w') as fobj:
     with redirect_stdout(fobj):
         help(redirect_stdout)
