@@ -68,13 +68,3 @@ def dir_exist(dir_path):
 
 execute_thread = threading.Thread(group=None, target=execute_backup, args=(dir_to_backup, backup_dst))
 execute_thread.start()
-
-
-
-
-
-
-
-
-
-
