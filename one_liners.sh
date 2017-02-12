@@ -13,6 +13,11 @@ find . -type f -name "X.Y*" -exec cat {} \; | grep "S"
 # knowing that there's a single IPv4 address per line
 find . -type f -name "access.log*" -exec cat {} \; | grep -oP '(\d{1,3}\.){3}(\d{1,3})'
 
+# Count the number of files in the current
+# working directory.
+
+
+
 
 
 
