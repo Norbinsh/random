@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # List all files in the CWD that contains 'X' in their body.
 # Redirecting stderr and stdout to /dev/null, then echoing the relevant files by names.
 for file in *; do if cat "$file" 2> /dev/null| grep "X" > /dev/null ; then echo "$file"; fi done
@@ -15,6 +16,8 @@ find . -type f -name "access.log*" -exec cat {} \; | grep -oP '(\d{1,3}\.){3}(\d
 
 # Count the number of files in the current
 # working directory.
+
+find . -type f | wc | awk '{print $1}'
 
 
 
