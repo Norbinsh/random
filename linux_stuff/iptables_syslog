@@ -1,0 +1,27 @@
+# Simple iptable drop with logging into dedicated file 
+
+*filter
+:INPUT ACCEPT [2:748]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [1:328]
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "[iptables] "
+-A INPUT -s 192.168.56.102/32 -i enp0s8 -p icmp -m icmp --icmp-type 8 -j DROP
+COMMIT
+
+# Completed on Sat Sep  2 13:15:40 2017
+:msg, contains,"[iptables] " /var/log/iptables.log
+
+# Output @ /var/log/iptables.log
+Sep  2 13:39:17 gnomeone kernel: [ 5018.557964] [iptables] IN=enp0s8 OUT= MAC=08:00:xx:6f:89:08:00:27:e8:16:4c:08:00 SRC=192.168.56.102 DST=192.168.56.101 LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=34646 DF PROTO=ICMP TYPE=8 CODE=0 ID=3106 SEQ=841 
+Sep  2 13:39:30 gnomeone kernel: [ 5030.846074] [iptables] IN=enp0s8 OUT= MAC=08:00:xx:6f:89:08:00:27:e8:16:4c:08:00 SRC=192.168.56.102 DST=192.168.56.101 LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=36104 DF PROTO=ICMP TYPE=8 CODE=0 ID=3106 SEQ=853 
+Sep  2 13:39:42 gnomeone kernel: [ 5043.134181] [iptables] IN=enp0s8 OUT= MAC=08:00:xx:6f:89:08:00:27:e8:16:4c:08:00 SRC=192.168.56.102 DST=192.168.56.101 LEN=84 TOS=0x00 PREC=0x00 TTL=64 ID=37318 DF PROTO=ICMP TYPE=8 CODE=0 ID=3106 SEQ=865 
+
+#pre up
+#!/bin/bash
+iptables-restore < /etc/iptables.rules
+exit 0
+
+#post down
+#!/bin/bash
+iptables-save > /etc/iptables.rules
+exit 0
