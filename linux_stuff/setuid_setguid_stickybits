@@ -1,0 +1,56 @@
+##################################
+#                                # 
+#            SETUID              #
+#                                #
+##################################
+
+
+** Executables
+# setuid on executable will technically allow a normal user to run the executable with privileges of the file owner (root, etc) for the newly created process.
+# Quite a few distros ignore setuid on executables due to security risks.
+
+# setuid bit is the octal digit 4 
+# Example: chmod 4711 -> This will set the setuid bit on, meaning - any users (not just the file owner) will be able to execute the file, with the privileges of the file owner.
+# So if the file is owned by a user called "shay", but a user named "james" runs it, it will run as shay:group
+
+** Directories
+# SETUID on directories is ignored on UNIX/LINUX
+
+
+##################################
+#                                #
+#            SETGID              #
+#                                #
+##################################
+
+** Executables
+# setgid on executable is the same as setuid on executable, just with group based privileges
+
+# setgid bit is the octal digit 2
+# Example: chmod 2171 -> This will set the setgid bit on, meaning - any users (not only those who are part of the owner group) will be able to execute the file, with the privileges of the owner group.
+# So if the file is owned by group "kittens", but some random user want to run this file even through he's not a kitten - he will still be able to do so, and execute the file with "kittens" group permissions, for the given process.
+
+** Directories
+# When the setgid is set on a directory, this causes new sub directories / files to inherit the group ID, rather than the group ID of the user who created the file.
+# New sub dirs inherit the setgid bit.
+# Example: user "shay" create a directory called "monitors" and set its setgid: "chmod 2777 monitors/" ->
+# user "james" creates a new file under "monitors" -> new file ownership will be as follows: james:shay where shay is the group of the user shay who set the GUID in the first place.
+
+****** Check for octal permissions *******
+
+# stat -c "%a" <file/dir>
+
+
+
+##################################
+#                                #
+#            STICKYBIT           #
+#                                #
+##################################
+
+# Stickybit octal digit is 1 
+# chmod 1770 <MYDIR> will set stickybit on the <MYDIR> directory, meaning, only the the owner will be allowed to delete the file, even if other users have the "permissions" to do it.
+
+# In case of sticky + gid bit together - sticky bit will have the final decision!
+
+
