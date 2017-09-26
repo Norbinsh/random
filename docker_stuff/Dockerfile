@@ -5,7 +5,7 @@ FROM ubuntu:latest
 RUN echo "Updating packages"
 RUN apt update -y
 RUN echo "Installing some goodies"
-RUN apt install -y --force-yes python3 vim openssh-server git
+RUN apt install -y --force-yes python3 python3-pip vim openssh-server git
 
 WORKDIR ~
 CMD cat /dev/zero | ssh-keygen -q -N ""
