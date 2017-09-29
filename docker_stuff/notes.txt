@@ -1,0 +1,1 @@
+# Remember that when building a docker image, each RUN command is becoming a writeable layer (container) and is first run, written to the image, and then destroyed. so try to chain RUNs when possible to reduce the number of image layers.
