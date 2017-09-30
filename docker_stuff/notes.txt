@@ -1,3 +1,16 @@
 # Remember that when building a docker image, each RUN command is becoming a writeable layer (container) and is first run, written to the image, and then destroyed. so try to chain RUNs when possible to reduce the number of image layers.
 
 # Use --no-cache=true when you absolutely don't want the current build to base on previous builds
+
+# We can use docker compose for more multi container automated setup, for example:
+
+version: '2'
+services:
+  dockerapp: # from version 2 and above there's no need to link containers as we can just use their name
+    build: . # Dockerfile sits here
+    ports:
+      - "5000:5000" # Expose 5000 on the container to 5000 on the host
+    volumes:
+      - .:/app # This is great, no need for manual COPY commands in the docker file if build correctly
+  redis:
+    image: redis:3.2.0
