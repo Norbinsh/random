@@ -1,0 +1,28 @@
+{% from "form_macros.html" import render_field %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+    <h2> Recent Records {{ display_record_database_name }} / {{ display_records_for }} </h2>
+
+    {% if no_id_list %}
+    {% for item in no_id_list %}
+    <strong> Id: </strong> {{ item.EmployeeId }} <strong> Name:</strong> {{ item.FirstName}} {{ item.LastName }}
+    <strong> Date:  </strong> {{ item.HireDate }}<br>
+    {% endfor %}
+    {% else %}
+    <p>No records for ID {{ id_lookup }}</p>
+    {% endif %}
+    <section>
+        <p>
+        <form action="{{url_for('cnc')}}">
+            <input type="submit" value="Choose another action?">
+        </form>
+        </p>
+    </section>
+
+</article>
+
+
+{% endblock %}

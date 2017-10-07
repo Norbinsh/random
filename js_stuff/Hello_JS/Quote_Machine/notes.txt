@@ -1,0 +1,32 @@
+Note to self.shay:
+
+# Mini project, a page that will display a random quote from external data
+# source. User can click a button to replace the quote.
+
+
+# Freestyle
+# Display a quote upon page load
+# Clicking a button will change current quote
+# Clicking a button will tweet out the current quote
+
+
+
+1. Frontend
+
+- Middle of the screen, set a place for the quote to be displayed with a nice
+background, leave room for quote author above it
+- Beneath the quote have 2 buttons, quote replace, quote tweet
+
+Make sure each element can be referred to specifically for later use.
+
+2. Backend
+
+- Quotes should be retrieved from external data-source, Google said to use http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1
+- Listen to Google (;)
+- Quote should auto refresh every 60 second from the last refresh (button) or page load time
+- On page load should set initial quote without requiring any user action
+- Get JSON once, then push it into the right elements (author && quote HTML tags)
+- Work on the buttons: update quote, twitt quote
+
+Have Fun!
+

@@ -1,0 +1,21 @@
+{% from "form_macros.html" import render_field %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+    <h2>Pick an action</h2>
+
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+        <table>
+            {{ render_field(form.search_action) }}
+            {{ render_field(form.submit) }}
+        </table>
+
+
+    </form>
+
+</article>
+
+{% endblock %}

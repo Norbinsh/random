@@ -1,0 +1,20 @@
+{% from "form_macros.html" import render_field %}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+
+    <form action="" method="post">
+
+        {{ form.hidden_tag() }}
+        <h3> Select Database </h3>
+        {{ render_field(form.db_name) }}
+        {{ render_field(form.submit) }}
+
+
+    </form>
+
+</article>
+{% endblock %}

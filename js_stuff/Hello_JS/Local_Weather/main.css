@@ -1,0 +1,17 @@
+body {
+    background-image: url('img/body_background.jpg');
+    background-attachment: fixed;
+    background-color: #9acfea;
+    padding-top: 3%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: #31b0d5 !important;
+}
+
+.jumbotron {
+    background-color: rgba(255,255,255,0.2) !important;
+
+}

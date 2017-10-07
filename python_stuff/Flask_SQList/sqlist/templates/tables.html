@@ -1,0 +1,26 @@
+{% from "form_macros.html" import render_field %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<article>
+
+<h2> Select a table from: {{ passed_database_name }} </h2>
+
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+
+    <p>
+        {% if no_tables %}
+            <p> There are no tables. </p>
+        {% else %}
+            {{ render_field(form.tb_name) }}
+            {{ render_field(form.id_lookup, size=10) }}
+            {{ render_field(form.submit) }}
+        {% endif %}
+    </p>
+    </form>
+
+</article>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+body {
+  background-color: #202e56;
+  color: #000000;
+  margin-top: 10%;
+}
+
+#main_header {
+  color: #FFFFFF;
+}
+
+.blockquote {
+  font-size: 2em;
+}
+
+#main_container {
+  border: 3px dotted #cecece;
+  padding-bottom:  1%;
+}
+
+#h1_author {
+  text-align: left;
+  float: left;
+}
+
+#h2_author {
+  text-align: right;
+  float: left;
+  font-style: italic;
+}
+

@@ -1,0 +1,18 @@
+{% from "form_macros.html" import render_field %}
+{% extends 'base.html' %}
+{% block content %}
+<article>
+    {% if tb_list_len == 0 %}
+    <h2> Couldn't access any {{ active_bind }}'s tables </h2>
+    <p>Select a <a href="{{url_for('cnc')}}"> different</a> db?</p>
+    {% else %}
+    <h2 style="clear:both"> Select a table (Total: {{ tb_list_len }})</h2>
+    <form action="{{ url_for('tables') }}" method="post">
+        {{ form.hidden_tag() }}
+        {{ render_field(form.table_name) }}
+        {{ render_field(form.submit) }}
+    </form>
+    {% endif %}
+</article>
+{% endblock %}
+

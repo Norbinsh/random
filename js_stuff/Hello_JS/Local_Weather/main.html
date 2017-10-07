@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Weather By Geolocation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="main.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="container" id="above_main"></div>
+<div class="container" id="main_container">
+    <div class="jumbotron">
+        <h1> <a href="#">Local Weather  </a></h1>
+        <p id="current_city">City Name</p>
+    </div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+    <div id="mid_div"><img id="temp_icon"><button type="button" class="btn btn-primary" id="toggle_button">F/C</button>
+    </div>
+    </div>
+    <p id="current_latitude"></p>
+    <p id="current_longitude"></p>
+</div>
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <hr>
+        <p class="mid_temp"></p>
+        <hr>
+    </div>
+</div>
+</div>
+</body>
+</html>
