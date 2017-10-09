@@ -1,20 +1,28 @@
 """
-Retrieve valid (Accessible) URLs from popular search engines, based on arbitrary (or user provided) keywords.
+Retrieve valid (Accessible) URLs from Google search engine, based on arbitrary generated keywords.
 """
 
 __author__ = 'Shay Elmualem'
 
 import aiohttp
 import asyncio
-from bs4 import BeautifulSoup
+import re
+
+
+def extract_href(html):
+    """
+    Grab the relevant a hrefs.
+    """
+    goorex = re.compile(r'(<h3 class=\"r\"><a dir=\"ltr\" href=\")(.*?)(\">)')  # this may not cover all use cases,
+    # depending on the requester, but it's good enough for current need
+    regsponse = re.findall(goorex, html)
+    return [i[1] for i in regsponse]
 
 
 class DynamicUrls:
-    def __init__(self, search_engine='google', max_urls_per_keyword=2, max_urls_total=4, keywords_source='ai'):
-        self.search_engine = search_engine
+    def __init__(self, max_urls_per_keyword=2, max_urls_total=10):
         self.max_urls_per_keyword = max_urls_per_keyword
         self.max_urls_total = max_urls_total
-        self.keywords_source = keywords_source
 
     @staticmethod
     async def fetch_url(session, url: str) -> object:
@@ -34,36 +42,41 @@ class DynamicUrls:
                      range(self.max_urls_total // self.max_urls_per_keyword)]
             return await asyncio.gather(*tasks)
 
-    async def return_raw_htmls(self):
+    async def return_google_htmls(self):
         """
-        S
+        Return raw HTMLs from google
         """
-        async with aiohttp.ClientSession(headers={'User-Agent' : 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; '
-                                                                 'rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'}) as \
+        async with aiohttp.ClientSession(headers={'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; '
+                                                                'rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'}) as \
                 session:
             tasks = [asyncio.ensure_future(self.fetch_url(session, f'https://www.google.com/search?q={kw}'))
                      for kw in await self.return_kws()]
             return await asyncio.gather(*tasks)
 
-    # async def
 
-durls = DynamicUrls()
-base_loop = asyncio.get_event_loop()
-future = asyncio.ensure_future(durls.return_urls())
-base_loop.run_until_complete(future)
+def main() -> set:
+    durls = DynamicUrls()
+    base_loop = asyncio.get_event_loop()
+    future = asyncio.ensure_future(durls.return_google_htmls())
+    resp = base_loop.run_until_complete(future)
+    unique_urls = [re.match('\/url\?q=([http|https]{4,5}://.*?/)', i)[1]
+                   for html in resp for i in extract_href(html)]
+    return set(unique_urls)
 
 
+if __name__ == '__main__':
+    print(main())
 
-# REMINDER[shay.elmualem] google paging goes by start=0, start=10, start=20 and so on
-
-# search_engine = 'https://www.google.com/search?q='
-#
-# r = requests.get(search_engine+'asdkjlaskdklasjdjkalsdkljklljk')
-#
-# html = r.text
-#
-# soup = BeautifulSoup(html, 'html.parser')
-#
-# divs = soup.findAll('h3', 'r')
-#
-# print(len(divs))
+"""
+Return example: 
+{'https://www.wordaz.com/', 'https://www.collinsdictionary.com/', 
+'http://www.thewhitegoddess.co.uk/', 'https://academic.oup.com/', 'http://ian.umces.edu/', 
+'https://de.wikipedia.org/', 'https://journeyingtothegoddess.wordpress.com/', 'http://sph.unc.edu/', 
+'https://www.merriam-webster.com/', 'https://en.wiktionary.org/', 'https://www.discogs.com/', 
+'http://tellspell.com/', 'http://www.yourdictionary.com/', 'https://www.youtube.com/', 'https://www.ancestry.com/', 
+'https://www.facebook.com/', 'https://theodora.com/', 'https://www.ncbi.nlm.nih.gov/', 
+'http://www.thefreedictionary.com/', 'https://peekaboomoments.com/', 'https://www.peekaboo.co/', 
+'http://scholar.google.com/', 'https://eng.ichacha.net/', 'http://www.morfix.co.il/', 'http://www.ijunoon.com/', 
+'http://www.dictionary.com/', 'https://www.poetrysoup.com/', 'https://www.britannica.com/', 
+'http://aldnoahzero.wikia.com/', 'https://www.wikitree.com/', 'https://en.wikipedia.org/'}
+"""
