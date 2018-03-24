@@ -1,0 +1,175 @@
+body {
+    direction: rtl;
+    background-image: url(../img/hy_1.png);
+    margin: auto;
+
+}
+
+#container {
+    width: 960px;
+    margin: auto;
+    position: relative;
+
+}
+
+#fixed_header {
+    margin-bottom: 50px;
+}
+
+#fixed_header h1 {
+    margin-top: 25px;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    font-size: 80px;
+    width: 450px;
+
+}
+
+
+
+
+#main {
+    background-color: lightblue;
+    height: 320px;
+    border-radius: 25px;
+    padding: 15px;
+
+
+}
+
+#one {
+
+    height: 35%;
+    width: 48%;
+    background-image: url(../img/job.jpg);
+    display: inline-block;
+    float: left;
+    margin-top: 3px;
+    background-color: black;
+    border-radius: 15px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+    text-align: right;
+
+
+}
+
+#one:hover {
+    width: 250px;
+    background-image: none;
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-10deg);
+
+}
+#two {
+    margin-top: 3px;
+    height: 35%;
+    width: 48%;
+    display: inline-block;
+    float: right;
+    background-color: black;
+    border-radius: 15px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+    background-image: url(../img/hobby.jpg);
+    text-align: right;
+}
+
+#two:hover {
+    width: 250px;
+    background-image: none;
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-10deg);
+}
+#three {
+    margin-top: 65px;
+    height: 35%;
+    width: 48%;
+    display: inline-block;
+    float: left;
+    background-color: black;
+    border-radius: 15px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+    background-image: url(../img/status.jpg);
+    text-align: right;
+}
+
+#three:hover {
+    width: 250px;
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-10deg);
+    background-image: none;
+}
+#four {
+    margin-top: 65px;
+    height: 35%;
+    width: 48%;
+    display: inline-block;
+    float: right;
+    background-color: black;
+    border-radius: 15px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+    background-image: url(../img/dob.jpg);
+    text-align: right;
+}
+
+#four:hover {
+    width: 250px;
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-10deg);
+    background-image: none;
+}
+
+
+.go {
+    font-family: 'David Libre', serif;
+    font-size: 50px;
+    color: skyblue;
+    font-weight: bold;
+    position: absolute;
+    z-index: -1;
+    text-align: right;
+    float: right;
+}
+
+#myimg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    max-width: 30%;
+    max-height: 30%;
+    border-radius: 25px;
+    margin-bottom: 50px;
+}
+
+#footer {
+    font-family: 'Amatic SC', cursive;
+    margin-top: 40px;
+    height: 60px;
+    width: auto;
+    background-color: red;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 50px;
+}
+
+#linkedin {
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    max-width: 30%;
+    max-height: 30%;
+    border-radius: 25px;
+    margin-top: 60px;
+
+}
