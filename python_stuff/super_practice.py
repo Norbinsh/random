@@ -10,36 +10,41 @@ you won't need to actually edit the class names in the code itself.
 additional use case may be an hybrid inheritance from several classes. 
 """
 
-class Base:
-	class_var = "my Base class var"
-	var = 5
 
-	def __init__(self):
-		print("I AM BASE")
+class Base:
+    class_var = "my Base class var"
+    var = 5
+
+    def __init__(self):
+        print("I AM BASE")
 
 
 class X(Base):
-	class_var = 'my X class var'
-	def __init__(self):
-		print('X')
-		super().__init__()
+    class_var = 'my X class var'
+
+    def __init__(self):
+        print('X')
+        super().__init__()
 
 
 class Y(Base):
-	var = 10
-	class_var = 'my Y class var'
-	def __init__(self):
-		print('Y')
-		super().__init__()
+    var = 10
+    class_var = 'my Y class var'
+
+    def __init__(self):
+        print('Y')
+        super().__init__()
 
 
 class Z(X, Y):
-	pass
+    pass
+
 
 # print(Base.__mro__)
 # print(Z.__mro__)
 # print(X.__mro__)
 print(X())
+
 
 # print(super(X, X).var)
 # print(super(Z, Z).var)
@@ -47,13 +52,15 @@ print(X())
 # print(Z.var)
 
 class Base():
-	def __init__(self):
-		s = super()
-		print(s.__thisclass__)
-		print(s.__self_class__)
-		s.__init__()
+    def __init__(self):
+        s = super()
+        print(s.__thisclass__)
+        print(s.__self_class__)
+        s.__init__()
+
 
 class SubClass(Base):
-	pass
+    pass
+
 
 sub = SubClass()
