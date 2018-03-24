@@ -7,12 +7,6 @@ __author__ = 'Shay Elmualem'
 import aiohttp
 import asyncio
 import re
-<<<<<<< HEAD
-
-
-class DynamicUrls:
-    def __init__(self, max_urls_per_keyword=2, max_urls_total=4):
-=======
 
 
 def extract_href(html):
@@ -27,7 +21,6 @@ def extract_href(html):
 
 class DynamicUrls:
     def __init__(self, max_urls_per_keyword=2, max_urls_total=10):
->>>>>>> 0db2aa690515b1a17af720780666cc67e5540c18
         self.max_urls_per_keyword = max_urls_per_keyword
         self.max_urls_total = max_urls_total
 
@@ -60,16 +53,16 @@ class DynamicUrls:
                      for kw in await self.return_kws()]
             return await asyncio.gather(*tasks)
 
-<<<<<<< HEAD
     async def extract_href(self):
         goorex = re.compile(r'(><h3 class=\"r\"><a\s(dir=\"ltr\"\s)?(href=\"\/url\?q=)(.*){1}\">)')
         print(type(goorex))
+
 
 durls = DynamicUrls()
 base_loop = asyncio.get_event_loop()
 future = asyncio.ensure_future(durls.return_google_htmls())
 print(base_loop.run_until_complete(future))
-=======
+
 
 def main() -> set:
     durls = DynamicUrls()
@@ -79,7 +72,6 @@ def main() -> set:
     unique_urls = [re.match('\/url\?q=([http|https]{4,5}://.*?/)', i)[1]
                    for html in resp for i in extract_href(html)]
     return set(unique_urls)
->>>>>>> 0db2aa690515b1a17af720780666cc67e5540c18
 
 
 if __name__ == '__main__':
