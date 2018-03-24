@@ -1,20 +1,18 @@
 """
-Retrieve valid (Accessible) URLs from popular search engines, based on arbitrary (or user provided) keywords.
+Retrieve valid (Accessible) URLs from Google search engine, based on arbitrary generated keywords.
 """
 
 __author__ = 'Shay Elmualem'
 
 import aiohttp
 import asyncio
-from bs4 import BeautifulSoup
+import re
 
 
 class DynamicUrls:
-    def __init__(self, search_engine='google', max_urls_per_keyword=2, max_urls_total=4, keywords_source='ai'):
-        self.search_engine = search_engine
+    def __init__(self, max_urls_per_keyword=2, max_urls_total=4):
         self.max_urls_per_keyword = max_urls_per_keyword
         self.max_urls_total = max_urls_total
-        self.keywords_source = keywords_source
 
     @staticmethod
     async def fetch_url(session, url: str) -> object:
@@ -34,7 +32,7 @@ class DynamicUrls:
                      range(self.max_urls_total // self.max_urls_per_keyword)]
             return await asyncio.gather(*tasks)
 
-    async def return_raw_htmls(self):
+    async def return_google_htmls(self):
         """
         S
         """
@@ -45,12 +43,14 @@ class DynamicUrls:
                      for kw in await self.return_kws()]
             return await asyncio.gather(*tasks)
 
-    # async def
+    async def extract_href(self):
+        goorex = re.compile(r'(><h3 class=\"r\"><a\s(dir=\"ltr\"\s)?(href=\"\/url\?q=)(.*){1}\">)')
+        print(type(goorex))
 
 durls = DynamicUrls()
 base_loop = asyncio.get_event_loop()
-future = asyncio.ensure_future(durls.return_urls())
-base_loop.run_until_complete(future)
+future = asyncio.ensure_future(durls.return_google_htmls())
+print(base_loop.run_until_complete(future))
 
 
 
