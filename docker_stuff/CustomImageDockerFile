@@ -1,0 +1,9 @@
+# ['Ubuntu Server', 'Latest Python 3', 'AWS CLI', 'Boto3']
+
+FROM python:latest
+
+RUN apt update -y && apt upgrade -y
+
+RUN pip install boto3 awscli
+
+# Self Note: docker run -it --rm --name generic_shay -v C:\Users\shay\Desktop\Mix\Python_stuff\aio.py:/aio.py norbin/custom:latest python aio.py
