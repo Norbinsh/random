@@ -40,6 +40,7 @@ class DynamicUrls:
         async with aiohttp.ClientSession() as session:
             tasks = [asyncio.ensure_future(self.fetch_url(session, 'http://setgetgo.com/randomword/get.php')) for _ in
                      range(self.max_urls_total // self.max_urls_per_keyword)]
+            print(await asyncio.gather(*tasks))
             return await asyncio.gather(*tasks)
 
     async def return_google_htmls(self):
@@ -55,13 +56,10 @@ class DynamicUrls:
 
     async def extract_href(self):
         goorex = re.compile(r'(><h3 class=\"r\"><a\s(dir=\"ltr\"\s)?(href=\"\/url\?q=)(.*){1}\">)')
-        print(type(goorex))
-
 
 durls = DynamicUrls()
 base_loop = asyncio.get_event_loop()
 future = asyncio.ensure_future(durls.return_google_htmls())
-print(base_loop.run_until_complete(future))
 
 
 def main() -> set:
