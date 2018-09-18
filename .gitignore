@@ -1,1 +1,6 @@
 **/BucketFilesCheck/logs_in_bucket.txt
+.vscode/settings.json
+docker_stuff/Ansible/sudoers
+docker_stuff/Ansible/authorized_keys
+docker_stuff/Ansible/compose/my.env
+docker_stuff/Ansible/compose/docker-compose.yml
