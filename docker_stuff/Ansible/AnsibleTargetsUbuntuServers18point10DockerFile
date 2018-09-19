@@ -5,7 +5,7 @@
 # build
 # docker build --build-arg ansible_password_arg=$env:temp_password -t test/test:v41 -f AnsibleTargetsUbuntuServers18point10DockerFile .
 # run locally for tests
-# $range = 1..50 | ForEach-Object {docker run -dit test/test:v41 /bin/bash}
+# 1..5 | % { docker run -p 400${_}:80 -dit test/test:v52 /bin/bash}
 # stop
 # docker stop $(docker ps -a -q --filter ancestor=test/test:v41)
 
@@ -28,6 +28,8 @@ RUN chown ansible:ansible /home/ansible
 RUN chmod 0440 /etc/sudoers
 
 EXPOSE 22
+
+EXPOSE 80
 
 ENTRYPOINT service ssh restart && bash
 
