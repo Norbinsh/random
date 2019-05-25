@@ -1,0 +1,16 @@
+{
+    "DelegationSets": [
+        {
+            "NameServers": [
+                "ns-34.awsdns-04.com", 
+                "ns-1550.awsdns-01.co.uk", 
+                "ns-1033.awsdns-01.org", 
+                "ns-530.awsdns-02.net"
+            ], 
+            "CallerReference": "1224", 
+            "Id": "/delegationset/N3FW4RVW00PLGO"
+        }
+    ], 
+    "IsTruncated": false, 
+    "MaxItems": "100"
+}
